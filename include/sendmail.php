@@ -24,7 +24,7 @@ $mail->addAddress($email, $_POST["username"]);
 $mail-> isHTML(true);
 
 $mail->Subject = "Email de confirmation | OTF_FOOD";
-$mail->Body = 'Bonjour, cliquer sur <a href="localhost/otf_food/verification.php?email='.$_POST["email"].'&token='.$token.'">le lien de confirmation</a> pour valider votre inscription à notre application web.';
+$mail->Body = 'Bonjour, cliquer sur <a href="localhost/otf_food/include/verification.php?email='.$_POST["email"].'&token='.$token.'">le lien de confirmation</a> pour valider votre inscription à notre application web.';
 
 $mail->SMTPDebug = 0; // desactiver le debug
 
