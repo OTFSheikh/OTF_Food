@@ -33,7 +33,7 @@ if (isset($_POST['valider'])) {
                 }else {
                     $token = $res['token'];
                     $email = $res['email'];
-                require_once "include/sendmail_connec.php";
+                    require_once "include/sendmail_connec.php";
 
                 }
             }
