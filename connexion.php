@@ -12,7 +12,7 @@
     <form action="connexion.php" method="post">
         <table>
             <tr><td>Username : </td><td><input type="text" name="username" id="username"></td></tr>
-            <tr><td>Mot de passe : </td><td><input type="text" name="mdp" id="mdp"></td></tr>
+            <tr><td>Mot de passe : </td><td><input type="password" name="mdp" id="mdp"></td></tr>
             <tr><td><input type="submit" value="Valider" name="valider" style="margin-right: 15px;"></td><td><a href="inscription.php">Je n'ai pas de compte</a></td></tr>
         </table>
     </form>

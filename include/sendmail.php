@@ -19,20 +19,19 @@ $mail->Password = 'cdlxlhqrdxdbaqtm';
 $mail -> SMTPSecure='tls';
 $mail->Port = 587;
 $mail->CharSet = "utf-8";
-$mail->setFrom('otfphp@gmail.com', 'baye Cheikh');
-$mail->addAddress('cheikh.baye010@gmail.com', 'baye');
+$mail->setFrom('otfphp@gmail.com', 'OTF FOOD');
+$mail->addAddress($email, $_POST["username"]);
 $mail-> isHTML(true);
 
-$mail->Subject = "confirmaition d'email";
-$mail->Body = "bonjour, baye le beau";
+$mail->Subject = "Email de confirmation | OTF_FOOD";
+$mail->Body = 'Bonjour, cliquer sur <a href="localhost/otf_food/verification.php?email='.$_POST["email"].'&token='.$token.'">le lien de confirmation</a> pour valider votre inscription à notre application web.';
 
 $mail->SMTPDebug = 0; // desactiver le debug
 
 if (!$mail->send()) {
-    $message = "Email non envoyé";
+    $message = "Email de confirmation non envoyé";
     echo 'Erreurs:'.$mail->ErrorInfo;
 }else {
-    $message = "un mail vous a été envoyé";
-    echo $message;
+    $message = "Un mail de confirmation vous a été envoyé (Vérifier votre boîte spam)";
 }
 ?>
