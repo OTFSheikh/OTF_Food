@@ -29,6 +29,11 @@ if (isset($_POST['valider'])) {
                 $message = "Le mot de passe ne correspond pas";
             }else{
                 if ($res['valide']==1) {
+                    session_start();
+                    $_SESSION['id']=$res['iduser'];
+                    $_SESSION['username']=$res['username'];
+                    $_SESSION['email']=$res['email'];
+
                     $message = "connecté";
                 }else {
                     $token = $res['token'];

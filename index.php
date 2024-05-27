@@ -8,6 +8,5 @@
 <body>
     <a href="inscription.php">M'inscrire</a>
     <a href="connexion.php">Me Connecter</a>
-
 </body>
 </html>

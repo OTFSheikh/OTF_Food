@@ -32,6 +32,6 @@ if (!$mail->send()) {
     $message = "Email de confirmation non envoyé";
     echo 'Erreurs:'.$mail->ErrorInfo;
 }else {
-    $message = "Vous devez confirmer le mail avant de vous connecter. <br> Un mail de confirmation vous a été envoyé (Vérifier votre boîte spam)";
+    $message = "Vous devez confirmer le mail avant de vous connecter. <br> Un mail de confirmation vous a été envoyé (Vérifier votre boîte spam).";
 }
 ?>
