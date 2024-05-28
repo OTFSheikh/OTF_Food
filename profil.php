@@ -33,7 +33,7 @@
             <table>
                 <tr><td>Votre username : </td><td><?=$user['username']?></td></tr>
                 <tr><td>Votre email : </td><td><?=$user['email']?></td></tr>
-                <tr><td><a href="form_modif.php"><button>Modifier Mon Compte</button></a></td><td><a href="delcompte.php"><button>Supprimer Mon Compte</button></a></td></tr>
+                <tr><td><a href="form_modif.php"><button>Modifier Mon Compte</button></a></td><td><a href="include/delcompte.php"><button>Supprimer Mon Compte</button></a></td></tr>
             </table>
             <?php
         }
