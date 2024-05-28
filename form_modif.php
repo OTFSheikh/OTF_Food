@@ -9,6 +9,8 @@
     <title>Modification</title>
 </head>
 <body>
+    <?php require_once "include/modif.php"?>
+
     <?php
     if (isset($_SESSION["id"])) {
         $id = $_SESSION["id"];
@@ -27,6 +29,12 @@
                 <tr><td>Email : </td><td><input type="text" name="email" id="email" value="<?=$user["email"]?>" size="25"></td></tr>
                 <tr><td><input type="submit" value="Modifier" name="valider"></td></tr>
             </table>
+            <?php
+        if (isset($message)) {
+            echo "<br>".$message;
+        }
+        
+        ?>
         </form>
 
         <?php 
