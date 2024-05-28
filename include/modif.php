@@ -31,18 +31,37 @@ if (isset($_POST['valider'])) {
             }elseif ($res2 && $res2["email"]!=$_SESSION['email']) {
                 $message = 'L\'email est déjà utilisé';
             }else {
-                $req = $bdd->prepare("UPDATE user set username=:username, email=:email WHERE iduser=:id");
-                $req->bindValue(":username", strip_tags($_POST["username"]));
-                $req->bindValue(":email", strip_tags($_POST["email"]));
-                $req->bindValue(":id", $_SESSION["id"]);
+                if (empty($_POST['mdp'])) {
+                    $req = $bdd->prepare("UPDATE user set username=:username, email=:email WHERE iduser=:id");
+                    $req->bindValue(":username", strip_tags($_POST["username"]));
+                    $req->bindValue(":email", strip_tags($_POST["email"]));
+                    $req->bindValue(":id", $_SESSION["id"]);
 
-                $res = $req->execute();
+                    $res = $req->execute();
 
-                if (!$res) {
-                    $message = "Une erreur s'est produite";
-                } else {
-                    $message = "Vos informations ont été modifiées";
+                    if (!$res) {
+                        $message = "Une erreur s'est produite";
+                    } else {
+                        $message = "Vos informations ont été modifiées";
+                    }
+                }else {
+                    $mdp = password_hash(strip_tags($_POST["mdp"]), PASSWORD_DEFAULT);
+                    $req = $bdd->prepare("UPDATE user set username=:username, email=:email,mdp=:mdp WHERE iduser=:id");
+                    $req->bindValue(":username", strip_tags($_POST["username"]));
+                    $req->bindValue(":email", strip_tags($_POST["email"]));
+                    $req->bindValue(":mdp", $mdp);
+
+                    $req->bindValue(":id", $_SESSION["id"]);
+
+                    $res = $req->execute();
+
+                    if (!$res) {
+                        $message = "Une erreur s'est produite";
+                    } else {
+                        $message = "Vos informations ont été modifiées";
+                    }
                 }
+                
             }
         }
 }
