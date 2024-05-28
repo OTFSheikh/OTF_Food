@@ -1,3 +1,9 @@
+<?php
+    session_start();
+    if(isset($_SESSION['id'])){
+        header('Location:accueil.php');
+    }else{
+        ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,3 +16,6 @@
     <a href="connexion.php">Me Connecter</a>
 </body>
 </html>
+<?php
+    }
+?>

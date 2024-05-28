@@ -17,6 +17,7 @@
         ?>
         <h3>Bienvenue sur notre App de partage de recette</h3>
         <h5>Gérez vos informations sur cette page</h5>
+        <a href="include/deconnexion.php">Me déconnecter</a>
         <?php 
         
         $id = $_SESSION["id"];

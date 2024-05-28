@@ -1,3 +1,9 @@
+<?php
+session_start();
+if (isset($_SESSION['id'])) {
+    header('Location:accueil.php');
+}else {
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,3 +33,7 @@
     </form>
 </body>
 </html>
+
+<?php
+}
+?>
