@@ -10,11 +10,15 @@
     <title>Profil</title>
 </head>
 <body>
-    <h3>Bienvenue sur notre App de partage de recette</h3>
-    <h5>Gérez vos informations sur cette page</h5>
+    
 
     <?php
     if (isset($_SESSION["id"])) {
+        ?>
+        <h3>Bienvenue sur notre App de partage de recette</h3>
+        <h5>Gérez vos informations sur cette page</h5>
+        <?php 
+        
         $id = $_SESSION["id"];
         require_once "include/start_bdd.php";
         $req = $bdd->prepare("SELECT * FROM user WHERE iduser=:id");
