@@ -34,7 +34,7 @@ if (isset($_POST['valider'])) {
                     $_SESSION['username']=$res['username'];
                     $_SESSION['email']=$res['email'];
 
-                    $message = "connecté";
+                    header("location:accueil.php");
                 }else {
                     $token = $res['token'];
                     $email = $res['email'];
