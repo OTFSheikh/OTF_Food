@@ -1,5 +1,6 @@
 <?php if (session_status() == PHP_SESSION_NONE) {
     session_start();
+    require_once 'include/start_bdd.php';
 }?>
 
 <!DOCTYPE html>
@@ -12,10 +13,11 @@
 <body>
     <?php
     if (isset($_SESSION["id"])) {
+        // ajouter les recettes
         $id=$_SESSION['id'];
         if (isset($_POST['ajouter'])) {
             if (!empty($_POST['nom']) || !empty($_POST['ing']) || !empty($_POST['etape'])) {
-                require_once 'include/start_bdd.php';
+                
                 $req = $bdd->prepare("INSERT INTO recette(nom, ingredient, etape, nbrelike, iduser) Values(:nom, :ingredient, :etape, :nbrelike, :iduser)");
                 $req->bindValue(":nom",strip_tags($_POST['nom']));
                 $req->bindValue(":ingredient",strip_tags($_POST['ing']));
@@ -56,7 +58,44 @@
         ?>
         </form>
     <?php
+                // Afficher les recettes
+                $req1 = $bdd->prepare("SELECT * FROM recette where iduser=:id");
+                $req1->bindValue(":id", $_SESSION['id']);
+                $res1 = $req1->execute();
+                $valeur = $req1->fetchAll(PDO::FETCH_ASSOC);
+                $nbre = $req1->rowCount();
         
+                if (!$res1) {
+                    $message="Erreur de connexion à la base";
+                }else {
+                    // echo "<pre>";
+                    // print_r($valeur);
+                    ?>
+                    <div class="table">
+                        <table>
+                            <tr>
+                                <th>Id</th>
+                                <th>Nom</th>
+                                <th>Ingredients</th>
+                                <th>Etapes</th>
+                                <th>Nombre de like</th>
+                            </tr>
+                    <?php
+                    foreach ($valeur as $key => $value) {
+                        ?>
+                        <tr>
+                            <td><?=$value['idrecette']?></td>
+                            <td><?=$value['nom']?></td>
+                            <td><?=$value['ingredient']?></td>
+                            <td><?=$value['etape']?></td>
+                            <td><?=$value['nbrelike']?></td>
+                            <td><a href="modifrecette.php?id=<?=$value["idrecette"]?>">Modifier</a></td>
+                            <td><a href="include/suprecette.php?id=<?=$value["idrecette"]?>">Supprimer</a></td>
+
+                        </tr>
+                        <?php
+                    }
+                }
 
     }else {
         header("location:connexion.php");
