@@ -72,24 +72,25 @@
                     // print_r($valeur);
                     ?>
                     <div class="table">
-                        <table>
+                        <table border="1">
                             <tr>
-                                <th>Id</th>
                                 <th>Nom</th>
                                 <th>Ingredients</th>
                                 <th>Etapes</th>
                                 <th>Nombre de like</th>
+                                <th>Modification</th>
+                                <th>Suppression</th>
+
                             </tr>
                     <?php
                     foreach ($valeur as $key => $value) {
                         ?>
                         <tr>
-                            <td><?=$value['idrecette']?></td>
                             <td><?=$value['nom']?></td>
                             <td><?=$value['ingredient']?></td>
                             <td><?=$value['etape']?></td>
                             <td><?=$value['nbrelike']?></td>
-                            <td><a href="modifrecette.php?id=<?=$value["idrecette"]?>">Modifier</a></td>
+                            <td><a href="include/modifrecette.php?id=<?=$value["idrecette"]?>&nom=<?=$value["nom"]?>&ing=<?=$value["ingredient"]?>&etape=<?=$value["etape"]?>">Modifier</a></td>
                             <td><a href="include/suprecette.php?id=<?=$value["idrecette"]?>">Supprimer</a></td>
 
                         </tr>

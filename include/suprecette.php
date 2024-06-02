@@ -10,4 +10,6 @@ if ($_GET && isset($_SESSION['id'])) {
     $req->bindvalue(":id", $id);
     $req->execute();
     header("location:../recette.php");
+}else {
+    header("location:../contact.php");
 }
