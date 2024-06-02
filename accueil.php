@@ -29,8 +29,10 @@
                 function auteur($id){
                     $bdd = new PDO("mysql:host=localhost;dbname=otf_food","root","");
                     $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                    $req1 = $bdd->prepare("SELECT username from user where iduser=:id");
+                    $req1 = $bdd->prepare("SELECT username from user where iduser=:id ");
                     $req1->bindValue(':id', $id);
+                    
+
                     $req1->execute();
                     $result = $req1->fetch();
 
